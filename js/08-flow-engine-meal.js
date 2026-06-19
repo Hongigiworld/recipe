@@ -118,7 +118,7 @@ try{
   render();
 }catch(e){
   console.error("WeeklyMeal start failed",e);
-  document.getElementById("app").innerHTML='<div style="padding:28px;font-family:Pretendard,Arial,sans-serif"><h2>앱 시작 오류</h2><p>저장된 앱 데이터가 깨져 시작하지 못했습니다.</p><button onclick="localStorage.clear();location.reload()" style="padding:14px 18px;border:0;border-radius:12px;background:#4B3FD8;color:white;font-weight:800">저장데이터 초기화 후 재시작</button></div>';
+  document.getElementById("app").innerHTML='<div style="padding:28px;font-family:Pretendard,Arial,sans-serif"><h2>앱 시작 오류</h2><p>저장된 앱 데이터가 깨져 시작하지 못했습니다.</p><button onclick="localStorage.clear();location.reload()" style="padding:10px 18px;border:0;border-radius:12px;background:#4B3FD8;color:white;font-weight:800">저장데이터 초기화 후 재시작</button></div>';
 }
 
 
@@ -352,7 +352,7 @@ function rRecipe(){
   </div>
   <div style="margin:0 20px 100px">
     <div class="sec">🧾 재료 목록</div>
-    <div style="background:var(--card);border-radius:16px;padding:14px;box-shadow:var(--shadow)">
+    <div style="background:var(--card);border-radius:16px;padding:10px;box-shadow:var(--shadow)">
       ${(()=>{
         const db=MENU_DB[m.name];
         const ings=db?db.ingredients:[];
@@ -409,7 +409,7 @@ function goMakeMeal(){
       <div style="font-size:32px;text-align:center;margin-bottom:12px">🗓️</div>
       <div style="font-weight:800;font-size:17px;text-align:center;margin-bottom:8px">이미 식단이 있어요</div>
       <div style="font-size:13px;color:#aaa;text-align:center;margin-bottom:20px;line-height:1.5">다시 짜면 기존 식단이 사라져요.<br>계속 진행할까요?</div>
-      <button id="confirm-remake" style="width:100%;padding:14px;background:var(--primary);border:none;border-radius:14px;font-weight:700;font-size:15px;color:#fff;cursor:pointer;margin-bottom:10px">새로 짜기</button>
+      <button id="confirm-remake" style="width:100%;padding:10px;background:var(--primary);border:none;border-radius:14px;font-weight:700;font-size:15px;color:#fff;cursor:pointer;margin-bottom:10px">새로 짜기</button>
       <button id="cancel-remake" style="width:100%;padding:12px;background:#f5f5f5;border:none;border-radius:14px;font-weight:700;font-size:14px;color:#aaa;cursor:pointer">취소</button>
     `;
     overlay.appendChild(box);
@@ -509,7 +509,7 @@ function confirmResetMeal(){
 
   // 1단계: 식단만 초기화
   const btn1=document.createElement("button");
-  btn1.style.cssText="width:100%;padding:14px;background:#FFF3E0;border:none;border-radius:14px;font-weight:700;font-size:14px;color:#E65100;cursor:pointer;margin-bottom:10px;text-align:left;display:flex;flex-direction:column;gap:4px";
+  btn1.style.cssText="width:100%;padding:10px;background:#FFF3E0;border:none;border-radius:14px;font-weight:700;font-size:14px;color:#E65100;cursor:pointer;margin-bottom:10px;text-align:left;display:flex;flex-direction:column;gap:4px";
   btn1.innerHTML='<span>🗓️ 식단만 초기화</span><span style="font-size:11px;font-weight:400;color:#aaa">식단 캘린더 삭제 · 냉장고/스케줄 유지</span>';
   btn1.onclick=()=>{
     S.mealCalendar={};
@@ -526,7 +526,7 @@ function confirmResetMeal(){
 
   // 2단계: 완전 초기화
   const btn2=document.createElement("button");
-  btn2.style.cssText="width:100%;padding:14px;background:#FFEBEE;border:none;border-radius:14px;font-weight:700;font-size:14px;color:#e53935;cursor:pointer;margin-bottom:10px;text-align:left;display:flex;flex-direction:column;gap:4px";
+  btn2.style.cssText="width:100%;padding:10px;background:#FFEBEE;border:none;border-radius:14px;font-weight:700;font-size:14px;color:#e53935;cursor:pointer;margin-bottom:10px;text-align:left;display:flex;flex-direction:column;gap:4px";
   btn2.innerHTML='<span>⚠️ 완전 초기화</span><span style="font-size:11px;font-weight:400;color:#aaa">식단+스케줄+기간 초기화 · 온보딩 재시작</span>';
   btn2.onclick=()=>{
     S.mealCalendar={};
@@ -582,7 +582,7 @@ function rBSuggest(){
       const sel=m.selected;
       return`<div onclick="(function(){const cur=S.bcSuggested[${i}].selected;const selCount=S.bcSuggested.filter(m=>m.selected).length;if(!cur&&selCount>=${max})return;S.bcSuggested[${i}].selected=!cur;render();})()"
         style="background:${sel?'#FFF8EE':'#fff'};border:1.5px solid ${sel?'var(--primary)':'#f0f0f0'};
-        border-radius:16px;padding:14px 16px;cursor:pointer;
+        border-radius:16px;padding:10px 16px;cursor:pointer;
         box-shadow:${sel?'0 2px 12px rgba(255,152,0,0.15)':'0 1px 4px rgba(0,0,0,0.05)'};
         display:flex;align-items:center;gap:12px">
         <div style="width:22px;height:22px;border-radius:6px;flex-shrink:0;

@@ -10,7 +10,7 @@ function rOnboard(){
     <div style="font-size:14px;color:var(--text-sub);line-height:1.45">요일별로 식단을 생성할 끼니를 선택해주세요.</div>
   </div>
   <div class="px" style="padding-bottom:150px">
-    <div style="background:#fff;border:1px solid var(--border);border-radius:20px;padding:14px;margin:10px 0 14px;box-shadow:var(--shadow)">
+    <div style="background:#fff;border:1px solid var(--border);border-radius:20px;padding:10px;margin:10px 0 14px;box-shadow:var(--shadow)">
       <div style="font-size:11px;font-weight:700;color:var(--text-sub);letter-spacing:1px;margin-bottom:10px">👥 몇 인 가족이에요?</div>
       <div style="display:flex;gap:8px">
         ${[1,2,3,4].map(n=>`<button onclick="S.people=${n};render()" style="flex:1;padding:12px 0;border-radius:14px;border:2px solid ${S.people===n?'var(--primary)':'var(--border)'};background:${S.people===n?'var(--primary-pale)':'#fff'};color:${S.people===n?'var(--primary)':'var(--text)'};font-weight:900;font-size:15px">${n}인</button>`).join("")}
@@ -37,7 +37,7 @@ function rOnboard(){
         ${["아침","점심","저녁"].map(m=>{
           const on=(S.schedule[day]||[]).includes(m);
           const meta=mealMeta[m];
-          return `<button class="schedule-meal-btn ${on?'active':''}" type="button" onclick="toggleSlot('${day}','${m}')" style="min-height:64px;padding:10px 6px;border-radius:17px;border:2px solid ${on?meta.color:'var(--border)'};background:${on?meta.bg:'#F7F8FA'};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-family:inherit;transition:all .14s ease;box-shadow:${on?'0 5px 14px rgba(75,63,216,.12)':'none'};opacity:${on?1:.72}">
+          return `<button class="schedule-meal-btn ${on?'active':''}" type="button" onclick="toggleSlot('${day}','${m}')" style="min-height:64px;padding:8px 6px;border-radius:17px;border:2px solid ${on?meta.color:'var(--border)'};background:${on?meta.bg:'#F7F8FA'};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-family:inherit;transition:all .14s ease;box-shadow:${on?'0 5px 14px rgba(75,63,216,.12)':'none'};opacity:${on?1:.72}">
             ${rMealSlotIcon(m,on)}
             <span style="font-size:14px;font-weight:900;color:${on?meta.color:'#9AA3AF'}">${m}</span>
             <span style="font-size:10px;font-weight:700;color:${on?meta.color:'#B0B7C3'}">${on?'선택됨':meta.sub}</span>
@@ -51,7 +51,7 @@ function rOnboard(){
       <div style="font-size:11px;color:#66A06A;margin-top:4px">선택한 끼니 기준으로 식단이 생성돼요</div>
     </div>
 
-    <div style="background:#fff;border:1px solid var(--border);border-radius:20px;padding:14px;margin-top:14px;box-shadow:var(--shadow)">
+    <div style="background:#fff;border:1px solid var(--border);border-radius:20px;padding:10px;margin-top:14px;box-shadow:var(--shadow)">
       <div style="font-size:11px;font-weight:700;color:var(--text-sub);letter-spacing:1px;margin-bottom:10px">📅 식단 기간</div>
       <div style="display:flex;gap:8px">
         ${[
@@ -130,7 +130,7 @@ function rHome(){
       </div>
     </div>
 
-    ${(urgent>0||expired>0)?`<button onclick="go('tab-fridge')" style="width:100%;border:none;border-radius:22px;background:#FFF3F5;padding:14px 16px;margin-bottom:16px;display:flex;align-items:center;gap:12px;text-align:left;box-shadow:0 10px 24px rgba(255,90,122,.08)">
+    ${(urgent>0||expired>0)?`<button onclick="go('tab-fridge')" style="width:100%;border:none;border-radius:22px;background:#FFF3F5;padding:10px 16px;margin-bottom:16px;display:flex;align-items:center;gap:12px;text-align:left;box-shadow:0 10px 24px rgba(255,90,122,.08)">
       <div style="width:42px;height:42px;border-radius:15px;background:#FF5A7A;color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px">!</div>
       <div style="flex:1">
         <div style="font-size:13px;font-weight:900;color:#B4233B">냉장고 확인이 필요해요</div>
@@ -141,17 +141,17 @@ function rHome(){
 
     <div style="font-size:12px;font-weight:900;color:#7E7694;letter-spacing:.5px;margin:2px 2px 10px">식단 시작하기</div>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px">
-      <button onclick="setFlow('a');go('home')" style="border:none;border-radius:24px;background:#fff;padding:14px 10px;text-align:left;min-height:136px;box-shadow:0 14px 32px rgba(32,25,84,.07)">
+      <button onclick="setFlow('a');go('home')" style="border:none;border-radius:24px;background:#fff;padding:10px 10px;text-align:left;min-height:136px;box-shadow:0 14px 32px rgba(32,25,84,.07)">
         <div style="width:40px;height:40px;border-radius:16px;background:#EEF9F4;display:flex;align-items:center;justify-content:center;font-size:21px;margin-bottom:12px">🥕</div>
         <div style="font-size:14px;font-weight:900;color:#171421;line-height:1.22;letter-spacing:-.5px">냉장고<br>활용</div>
         <div style="font-size:10px;color:#9A95AA;margin-top:7px;line-height:1.35">${fridgeCount?`${fridgeCount}가지 재료`:'있는 재료로'}</div>
       </button>
-      <button onclick="setFlow('b');go('home')" style="border:none;border-radius:24px;background:#fff;padding:14px 10px;text-align:left;min-height:136px;box-shadow:0 14px 32px rgba(32,25,84,.07)">
+      <button onclick="setFlow('b');go('home')" style="border:none;border-radius:24px;background:#fff;padding:10px 10px;text-align:left;min-height:136px;box-shadow:0 14px 32px rgba(32,25,84,.07)">
         <div style="width:40px;height:40px;border-radius:16px;background:#F3F0FF;display:flex;align-items:center;justify-content:center;font-size:21px;margin-bottom:12px">✨</div>
         <div style="font-size:14px;font-weight:900;color:#171421;line-height:1.22;letter-spacing:-.5px">추천<br>받기</div>
         <div style="font-size:10px;color:#9A95AA;margin-top:7px;line-height:1.35">뭐 먹을지<br>모를 때</div>
       </button>
-      <button onclick="setFlow('c');go('home')" style="border:none;border-radius:24px;background:#fff;padding:14px 10px;text-align:left;min-height:136px;box-shadow:0 14px 32px rgba(32,25,84,.07)">
+      <button onclick="setFlow('c');go('home')" style="border:none;border-radius:24px;background:#fff;padding:10px 10px;text-align:left;min-height:136px;box-shadow:0 14px 32px rgba(32,25,84,.07)">
         <div style="width:40px;height:40px;border-radius:16px;background:#FFF2E9;display:flex;align-items:center;justify-content:center;font-size:21px;margin-bottom:12px">🍽️</div>
         <div style="font-size:14px;font-weight:900;color:#171421;line-height:1.22;letter-spacing:-.5px">직접<br>선택</div>
         <div style="font-size:10px;color:#9A95AA;margin-top:7px;line-height:1.35">먹고 싶은<br>메뉴로</div>
@@ -160,15 +160,15 @@ function rHome(){
 
     <div style="font-size:12px;font-weight:900;color:#7E7694;letter-spacing:.5px;margin:2px 2px 10px">오늘 요약</div>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px">
-      <div style="background:#fff;border-radius:22px;padding:14px 10px;text-align:center;box-shadow:0 12px 28px rgba(32,25,84,.06)">
+      <div style="background:#fff;border-radius:22px;padding:10px 10px;text-align:center;box-shadow:0 12px 28px rgba(32,25,84,.06)">
         <div style="font-size:20px;font-weight:900;color:#6D50F6">${todayCount}</div>
         <div style="font-size:10px;color:#9A95AA;font-weight:700;margin-top:3px">오늘 끼니</div>
       </div>
-      <div style="background:#fff;border-radius:22px;padding:14px 10px;text-align:center;box-shadow:0 12px 28px rgba(32,25,84,.06)">
+      <div style="background:#fff;border-radius:22px;padding:10px 10px;text-align:center;box-shadow:0 12px 28px rgba(32,25,84,.06)">
         <div style="font-size:20px;font-weight:900;color:#6D50F6">${cartCount}</div>
         <div style="font-size:10px;color:#9A95AA;font-weight:700;margin-top:3px">장보기</div>
       </div>
-      <div style="background:#fff;border-radius:22px;padding:14px 10px;text-align:center;box-shadow:0 12px 28px rgba(32,25,84,.06)">
+      <div style="background:#fff;border-radius:22px;padding:10px 10px;text-align:center;box-shadow:0 12px 28px rgba(32,25,84,.06)">
         <div style="font-size:20px;font-weight:900;color:#6D50F6">${S.people||1}</div>
         <div style="font-size:10px;color:#9A95AA;font-weight:700;margin-top:3px">인분</div>
       </div>
@@ -211,7 +211,7 @@ function rHomeDone(){
     </div>
   </div>
   <div style="padding:8px 20px 24px">
-    ${urgent>0||expired>0?`<div style="background:#FFF0F0;border:1.5px solid #FFD0D0;border-radius:16px;padding:14px;margin-bottom:14px;display:flex;align-items:center;gap:12px" onclick="go('tab-fridge')">
+    ${urgent>0||expired>0?`<div style="background:#FFF0F0;border:1.5px solid #FFD0D0;border-radius:16px;padding:10px;margin-bottom:14px;display:flex;align-items:center;gap:12px" onclick="go('tab-fridge')">
       <div style="width:40px;height:40px;background:#FF6B6B;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">⚠️</div>
       <div style="flex:1">${expired>0?`<div style="font-size:13px;font-weight:700;color:var(--accent)">만료된 재료 ${expired}개</div>`:""} ${urgent>0?`<div style="font-size:13px;font-weight:600;color:var(--primary)">3일 이내 만료 ${urgent}개</div>`:""}</div>
       <span style="color:#ddd">›</span>
@@ -237,7 +237,7 @@ function rHomeDone(){
 
     <div style="background:#f8f8f8;border-radius:16px;padding:16px;margin-top:8px">
       <div style="font-size:13px;color:#888;margin-bottom:12px;font-weight:600">다음 주 식단 준비</div>
-      <button onclick="confirmNewPlan()" style="width:100%;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:14px;font-weight:700;font-size:14px">🔄 새 식단 짜기</button>
+      <button onclick="confirmNewPlan()" style="width:100%;padding:10px;background:var(--primary);color:#fff;border:none;border-radius:14px;font-weight:700;font-size:14px">🔄 새 식단 짜기</button>
     </div>
 
     <div style="display:flex;gap:8px;margin-top:10px">
@@ -331,7 +331,7 @@ function rHomeA(){
         </div>
         <span style="color:${S.fridge.length>0&&S.bcStyles.length>0?"rgba(255,255,255,0.7)":"#ccc"}">›</span>
       </button>
-      ${S.mealPlan?`<button onclick="go('a-meal')" style="width:100%;padding:14px 18px;border-radius:16px;border:2px solid #2ECC71;background:#E8F5E9;display:flex;align-items:center;gap:14px;text-align:left">
+      ${S.mealPlan?`<button onclick="go('a-meal')" style="width:100%;padding:10px 18px;border-radius:16px;border:2px solid #2ECC71;background:#E8F5E9;display:flex;align-items:center;gap:14px;text-align:left">
         <span style="font-size:22px">📅</span>
         <div style="flex:1"><div style="font-weight:700;font-size:14px;color:#2e7d32">식단 보기</div></div>
         <span style="color:#2ECC71">›</span>
@@ -379,7 +379,7 @@ function rHomeB(){
         <div style="flex:1"><div style="font-weight:700;font-size:14px">장보기 목록 확인</div></div>
         <span style="color:#aaa">›</span>
       </button>`:""}
-      ${S.mealPlan?`<button onclick="go('bc-meal')" style="width:100%;padding:14px 18px;border-radius:16px;border:2px solid #2ECC71;background:#E8F5E9;display:flex;align-items:center;gap:14px;text-align:left">
+      ${S.mealPlan?`<button onclick="go('bc-meal')" style="width:100%;padding:10px 18px;border-radius:16px;border:2px solid #2ECC71;background:#E8F5E9;display:flex;align-items:center;gap:14px;text-align:left">
         <span style="font-size:22px">📅</span>
         <div style="flex:1"><div style="font-weight:700;font-size:14px;color:#2e7d32">식단 보기</div></div>
         <span style="color:#2ECC71">›</span>
@@ -427,7 +427,7 @@ function rHomeC(){
         <div style="flex:1"><div style="font-weight:700;font-size:14px">장보기 목록 확인</div></div>
         <span style="color:#aaa">›</span>
       </button>`:""}
-      ${S.mealPlan?`<button onclick="go('bc-meal')" style="width:100%;padding:14px 18px;border-radius:16px;border:2px solid #2ECC71;background:#E8F5E9;display:flex;align-items:center;gap:14px;text-align:left">
+      ${S.mealPlan?`<button onclick="go('bc-meal')" style="width:100%;padding:10px 18px;border-radius:16px;border:2px solid #2ECC71;background:#E8F5E9;display:flex;align-items:center;gap:14px;text-align:left">
         <span style="font-size:22px">📅</span>
         <div style="flex:1"><div style="font-weight:700;font-size:14px;color:#2e7d32">식단 보기</div></div>
         <span style="color:#2ECC71">›</span>

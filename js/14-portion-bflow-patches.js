@@ -836,7 +836,7 @@
           var selected = !!m.selected;
           var kcal = kcalText(m.name);
           var ing = safeArr(m.ingredients).length ? safeArr(m.ingredients).slice(0,3) : mainIngredientNames(m.name);
-          return '<div onclick="toggleBSuggest('+i+', event)" style="background:'+(selected?'#FFF8EE':'#fff')+';border:1.5px solid '+(selected?'var(--primary)':'#f0f0f0')+';border-radius:16px;padding:14px 14px;cursor:pointer;box-shadow:'+(selected?'0 2px 12px rgba(255,152,0,0.15)':'0 1px 4px rgba(0,0,0,0.05)')+';display:flex;align-items:center;gap:12px">'
+          return '<div onclick="toggleBSuggest('+i+', event)" style="background:'+(selected?'#FFF8EE':'#fff')+';border:1.5px solid '+(selected?'var(--primary)':'#f0f0f0')+';border-radius:16px;padding:10px 14px;cursor:pointer;box-shadow:'+(selected?'0 2px 12px rgba(255,152,0,0.15)':'0 1px 4px rgba(0,0,0,0.05)')+';display:flex;align-items:center;gap:12px">'
             + '<div style="width:22px;height:22px;border-radius:6px;flex-shrink:0;background:'+(selected?'var(--primary)':'#f5f5f5')+';border:2px solid '+(selected?'var(--primary)':'#e0e0e0')+';display:flex;align-items:center;justify-content:center">'+(selected?'<span style="color:#fff;font-size:13px;font-weight:900">✓</span>':'')+'</div>'
             + '<div style="flex:1;min-width:0">'
             +   '<div style="display:flex;align-items:center;gap:6px;margin-bottom:3px;min-width:0">'

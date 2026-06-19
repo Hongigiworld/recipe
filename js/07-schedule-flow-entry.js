@@ -70,16 +70,16 @@ function rSchedule(){
         </div>`;
       }).join("")}
     </div>
-    ${DAYS.map(day=>`<div style="background:#fff;border:1px solid var(--border);border-radius:20px;padding:14px;margin-bottom:10px;box-shadow:var(--shadow)">
+    ${DAYS.map(day=>`<div class="schedule-day-card" style="background:#fff;border:1px solid var(--border);border-radius:20px;padding:8px;margin-bottom:8px;box-shadow:var(--shadow)">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
         <div style="font-weight:900;font-size:16px">${day}요일</div>
-        <div style="font-size:12px;color:var(--text-sub);font-weight:700">${(S.schedule[day]||[]).length}끼</div>
+        <div class="schedule-count-badge">${(S.schedule[day]||[]).length}끼 선택</div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
         ${["아침","점심","저녁"].map(m=>{
           const on=(S.schedule[day]||[]).includes(m);
           const meta=mealMeta[m];
-          return `<button type="button" onclick="toggleSlot('${day}','${m}')" style="min-height:86px;padding:10px 6px;border-radius:17px;border:2px solid ${on?meta.color:'var(--border)'};background:${on?meta.bg:'#F7F8FA'};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-family:inherit;transition:all .14s ease;box-shadow:${on?'0 5px 14px rgba(75,63,216,.12)':'none'};opacity:${on?1:.72}">
+          return `<button class="schedule-meal-btn ${on?'active':''}" type="button" onclick="toggleSlot('${day}','${m}')" style="min-height:54px;padding:6px 4px;border-radius:17px;border:2px solid ${on?meta.color:'var(--border)'};background:${on?meta.bg:'#F7F8FA'};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-family:inherit;transition:all .14s ease;box-shadow:${on?'0 5px 14px rgba(75,63,216,.12)':'none'};opacity:${on?1:.72}">
             ${rMealSlotIcon(m,on)}
             <span style="font-size:14px;font-weight:900;color:${on?meta.color:'#9AA3AF'}">${m}</span>
             <span style="font-size:10px;font-weight:700;color:${on?meta.color:'#B0B7C3'}">${on?'선택됨':meta.sub}</span>
@@ -168,7 +168,7 @@ function rAStyle(){
     +'<div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;min-height:36px">'+tagsHtml+'</div>'
     +'<div style="margin-bottom:8px">'
     +'<label style="font-size:13px;color:#888;font-weight:600;margin-bottom:6px;display:block">국가/스타일 선택</label>'
-    +'<button onclick="openStyleDrop()" style="width:100%;padding:14px 16px;border-radius:14px;border:2px solid var(--border);background:#fff;text-align:left;font-size:14px;color:var(--text-sub);cursor:pointer;display:flex;justify-content:space-between;align-items:center"><span>스타일 추가하기</span><span>＋</span></button>'
+    +'<button onclick="openStyleDrop()" style="width:100%;padding:10px 16px;border-radius:14px;border:2px solid var(--border);background:#fff;text-align:left;font-size:14px;color:var(--text-sub);cursor:pointer;display:flex;justify-content:space-between;align-items:center"><span>스타일 추가하기</span><span>＋</span></button>'
     +'</div>'
     +clearBtn
     +'</div>'
@@ -218,15 +218,15 @@ function showInsufficientModal(count){
       <div style="font-weight:800;font-size:18px;margin-top:8px">냉장고 재료가 부족해요</div>
       <div style="font-size:13px;color:#888;margin-top:6px">현재 <strong>${count}가지</strong> 재료가 있어요<br>식단을 짜려면 최소 <strong>5가지 이상</strong> 필요해요</div>
     </div>
-    <div style="background:#f8f8f8;border-radius:14px;padding:14px;margin-bottom:16px;font-size:13px;color:#666;line-height:1.8">
+    <div style="background:#f8f8f8;border-radius:14px;padding:10px;margin-bottom:16px;font-size:13px;color:#666;line-height:1.8">
       💡 <strong>이렇게 해보세요</strong><br>
       • ❄️ 냉장고에 재료를 더 추가하기<br>
       • 🤔 B플로우: 스타일 선택 후 메뉴 추천받기<br>
       • 🍖 C플로우: 먹고 싶은 메뉴 직접 입력하기
     </div>
     <div style="display:flex;gap:8px">
-      <button onclick="closePopup();go('a-fridge')" style="flex:1;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:14px;font-weight:700;font-size:14px">재료 추가하기</button>
-      <button onclick="closePopup();resetFlow()" style="flex:1;padding:14px;background:#f0f0f0;color:#666;border:none;border-radius:14px;font-weight:700;font-size:14px">다른 방법으로</button>
+      <button onclick="closePopup();go('a-fridge')" style="flex:1;padding:10px;background:var(--primary);color:#fff;border:none;border-radius:14px;font-weight:700;font-size:14px">재료 추가하기</button>
+      <button onclick="closePopup();resetFlow()" style="flex:1;padding:10px;background:#f0f0f0;color:#666;border:none;border-radius:14px;font-weight:700;font-size:14px">다른 방법으로</button>
     </div>
   </div>`;
   document.body.appendChild(el);
@@ -243,13 +243,13 @@ function showInsufficientMenuModal(count, fridgeNames){
       <div style="font-weight:800;font-size:18px;margin-top:8px">재료로 만들 수 있는 메뉴가 부족해요</div>
       <div style="font-size:13px;color:#888;margin-top:6px">현재 재료로 만들 수 있는 메뉴가 <strong>${count}개</strong>뿐이에요<br>재료를 더 추가하거나 스타일을 바꿔보세요</div>
     </div>
-    <div style="background:#FFF8EE;border-radius:14px;padding:14px;margin-bottom:16px;font-size:13px;color:#666;line-height:1.8">
+    <div style="background:#FFF8EE;border-radius:14px;padding:10px;margin-bottom:16px;font-size:13px;color:#666;line-height:1.8">
       🛒 <strong>장을 봐서 채워볼까요?</strong><br>
       B/C 플로우로 가면 필요한 재료를 한번에 장볼 수 있어요
     </div>
     <div style="display:flex;gap:8px">
-      <button onclick="closePopup();go('a-style')" style="flex:1;padding:14px;background:var(--primary);color:#fff;border:none;border-radius:14px;font-weight:700;font-size:14px">스타일 다시 선택</button>
-      <button onclick="closePopup();resetFlow()" style="flex:1;padding:14px;background:#f0f0f0;color:#666;border:none;border-radius:14px;font-weight:700;font-size:14px">다른 방법으로</button>
+      <button onclick="closePopup();go('a-style')" style="flex:1;padding:10px;background:var(--primary);color:#fff;border:none;border-radius:14px;font-weight:700;font-size:14px">스타일 다시 선택</button>
+      <button onclick="closePopup();resetFlow()" style="flex:1;padding:10px;background:#f0f0f0;color:#666;border:none;border-radius:14px;font-weight:700;font-size:14px">다른 방법으로</button>
     </div>
   </div>`;
   document.body.appendChild(el);
@@ -288,7 +288,7 @@ function rBCEntry(){
           <button type="button" onclick="event.preventDefault();event.stopPropagation();S.bcStyles.splice(${i},1);render();return false;" style="background:rgba(255,255,255,0.25);border:none;color:#fff;font-size:11px;cursor:pointer;padding:2px 5px;border-radius:8px;line-height:1;font-weight:900;pointer-events:auto">✕</button>
         </span>`;}).join("")}
     </div>`:""}
-    <button onclick="openStyleDrop()" style="width:100%;padding:14px 16px;border-radius:14px;border:2px dashed var(--primary);background:#FFF8EE;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:700;color:var(--primary)">
+    <button onclick="openStyleDrop()" style="width:100%;padding:10px 16px;border-radius:14px;border:2px dashed var(--primary);background:#FFF8EE;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:700;color:var(--primary)">
       ＋ 스타일 추가하기
     </button>`:`
     <div class="sec">메뉴 입력 (${S.bcMenus.length}/${max})</div>
