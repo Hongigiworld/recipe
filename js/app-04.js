@@ -1344,13 +1344,7 @@ function genBCCart(){
 
 
 
-try{
-  S.screen="splash";
-  render();
-}catch(e){
-  console.error("WeeklyMeal start failed",e);
-  document.getElementById("app").innerHTML='<div style="padding:28px;font-family:Pretendard,Arial,sans-serif"><h2>앱 시작 오류</h2><p>저장된 앱 데이터가 깨져 시작하지 못했습니다.</p><button onclick="localStorage.clear();location.reload()" style="padding:14px 18px;border:0;border-radius:12px;background:#4B3FD8;color:white;font-weight:800">저장데이터 초기화 후 재시작</button></div>';
-}
+/* start moved to js/99-start.js */
 
 
 
