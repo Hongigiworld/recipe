@@ -28,7 +28,7 @@ function rOnboard(){
       }).join("")}
     </div>
 
-    ${DAYS.map(day=>`<div style="background:#fff;border:1px solid var(--border);border-radius:20px;padding:14px;margin-bottom:10px;box-shadow:var(--shadow)">
+    ${DAYS.map(day=>`<div style="background:#fff;border:1px solid var(--border);border-radius:20px;padding:12px;margin-bottom:8px;box-shadow:var(--shadow)">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
         <div style="font-weight:900;font-size:16px">${day}요일</div>
         <div style="font-size:12px;color:var(--text-sub);font-weight:700">${(S.schedule[day]||[]).length}끼</div>
@@ -37,7 +37,7 @@ function rOnboard(){
         ${["아침","점심","저녁"].map(m=>{
           const on=(S.schedule[day]||[]).includes(m);
           const meta=mealMeta[m];
-          return `<button type="button" onclick="toggleSlot('${day}','${m}')" style="min-height:86px;padding:10px 6px;border-radius:17px;border:2px solid ${on?meta.color:'var(--border)'};background:${on?meta.bg:'#F7F8FA'};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-family:inherit;transition:all .14s ease;box-shadow:${on?'0 5px 14px rgba(75,63,216,.12)':'none'};opacity:${on?1:.72}">
+          return `<button class="schedule-meal-btn ${on?'active':''}" type="button" onclick="toggleSlot('${day}','${m}')" style="min-height:64px;padding:10px 6px;border-radius:17px;border:2px solid ${on?meta.color:'var(--border)'};background:${on?meta.bg:'#F7F8FA'};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-family:inherit;transition:all .14s ease;box-shadow:${on?'0 5px 14px rgba(75,63,216,.12)':'none'};opacity:${on?1:.72}">
             ${rMealSlotIcon(m,on)}
             <span style="font-size:14px;font-weight:900;color:${on?meta.color:'#9AA3AF'}">${m}</span>
             <span style="font-size:10px;font-weight:700;color:${on?meta.color:'#B0B7C3'}">${on?'선택됨':meta.sub}</span>
