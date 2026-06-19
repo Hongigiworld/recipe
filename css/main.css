@@ -1909,3 +1909,61 @@ button[onclick*="splice"]{
   .wm7-duo{display:grid;grid-template-columns:1fr 1fr;gap:10px}.wm7-primary{width:100%;min-height:52px;border:0;border-radius:18px;background:linear-gradient(135deg,#6D5DF6,#3F32C9);color:#fff;font-weight:950;font-size:15px}.wm7-secondary{width:100%;min-height:52px;border:0;border-radius:18px;background:#fff;color:#111827;font-weight:900;font-size:14px;box-shadow:0 8px 20px rgba(15,23,42,.045)}
   @media(max-width:390px){.wm7-choice{min-height:132px;padding:13px 10px}.wm7-choice b{font-size:14px}.wm7-title{font-size:26px}}
 /* ===== /sprint7a-flow-logic-reorder ===== */
+/* ===== Schedule UI Compact Polish ===== */
+
+.schedule-day-card,
+div[style*="월요일"],
+div[style*="화요일"],
+div[style*="수요일"],
+div[style*="목요일"],
+div[style*="금요일"],
+div[style*="토요일"],
+div[style*="일요일"] {
+  border-radius: 22px !important;
+}
+
+/* 요일 카드 높이 압축 */
+.schedule-day-card {
+  padding: 12px 14px !important;
+  margin-bottom: 9px !important;
+}
+
+/* 아침/점심/저녁 버튼 */
+.schedule-meal-btn {
+  min-height: 52px !important;
+  border-radius: 16px !important;
+  background: #F8F9FC !important;
+  border: 1px solid rgba(17,24,39,.08) !important;
+  box-shadow: none !important;
+  transition: all .16s ease !important;
+}
+
+/* 선택된 식사 버튼 */
+.schedule-meal-btn.active,
+.schedule-meal-btn.selected {
+  background: #F3F0FF !important;
+  border: 1.8px solid #6D5DF6 !important;
+  box-shadow: 0 8px 20px rgba(109,93,246,.14) !important;
+}
+
+/* 미선택 텍스트 약하게 */
+.schedule-meal-btn:not(.active):not(.selected) {
+  color: #A8B0BD !important;
+  opacity: .72;
+}
+
+/* 상단 아침/점심/저녁 요약 카드 */
+.schedule-summary-card {
+  border-radius: 20px !important;
+  min-height: 54px !important;
+  padding: 11px 14px !important;
+}
+
+/* 오른쪽 0끼 / 1끼 배지 */
+.schedule-count-badge {
+  background: #F3F0FF !important;
+  color: #6D5DF6 !important;
+  font-weight: 850 !important;
+  border-radius: 999px !important;
+  padding: 4px 10px !important;
+}
